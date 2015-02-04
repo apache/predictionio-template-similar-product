@@ -40,7 +40,7 @@ class DataSource(val dsp: DataSourceParams)
         }
       }
       (entityId, user)
-    }
+    }.cache()
 
     // create a RDD of (entityID, Item)
     val itemsRDD: RDD[(String, Item)] = eventsDb.aggregateProperties(
@@ -58,7 +58,7 @@ class DataSource(val dsp: DataSourceParams)
         }
       }
       (entityId, item)
-    }
+    }.cache()
 
     // get all "user" "view" "item" events
     val viewEventsRDD: RDD[ViewEvent] = eventsDb.find(
@@ -85,7 +85,7 @@ class DataSource(val dsp: DataSourceParams)
           }
         }
         viewEvent
-      }
+      }.cache()
 
     new TrainingData(
       users = usersRDD,
