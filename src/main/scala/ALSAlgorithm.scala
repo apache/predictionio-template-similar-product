@@ -56,7 +56,9 @@ object ALSModel
   def apply(id: String, params: ALSAlgorithmParams,
     sc: Option[SparkContext]) = {
     new ALSModel(
-      productFeatures = sc.get.objectFile(s"/tmp/${id}/productFeatures"),
+      productFeatures = sc.get
+        .objectFile(s"/tmp/${id}/productFeatures")
+        .cache(), // persist to memory for fast multiple accesses
       itemStringIntMap = sc.get
         .objectFile[BiMap[String, Int]](s"/tmp/${id}/itemStringIntMap").first,
       items = sc.get
