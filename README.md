@@ -1,5 +1,21 @@
 # Similar Product Template
 
+## Documentation
+
+Please refer to http://docs.prediction.io/templates/similarproduct/quickstart/
+
+## Versions
+
+### v0.1.1
+
+- Persist RDD to memory (.cache()) in DataSource for better performance
+- Use local model for faster serving.
+
+### v0.1.0 (Current)
+
+- initial version
+
+
 ## Development Notes
 
 ### import sample data
