@@ -6,12 +6,12 @@ Please refer to http://docs.prediction.io/templates/similarproduct/quickstart/
 
 ## Versions
 
-### v0.1.1
+### develop
 
 - Persist RDD to memory (.cache()) in DataSource for better performance
 - Use local model for faster serving.
 
-### v0.1.0 (Current)
+### v0.1.0
 
 - initial version
 
