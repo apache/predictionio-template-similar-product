@@ -8,6 +8,8 @@ Please refer to http://docs.prediction.io/templates/similarproduct/quickstart/
 
 ### develop
 
+### v0.1.1
+
 - Persist RDD to memory (.cache()) in DataSource for better performance
 - Use local model for faster serving.
 
@@ -77,7 +79,6 @@ http://localhost:8000/queries.json \
 -w %{time_connect}:%{time_starttransfer}:%{time_total}
 ```
 
-```
 
 all unknown items:
 
