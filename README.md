@@ -6,7 +6,9 @@ Please refer to http://docs.prediction.io/templates/similarproduct/quickstart/
 
 ## Versions
 
-### develop
+### v0.1.2
+
+- update for PredictionIO 0.9.0
 
 ### v0.1.1
 
@@ -26,7 +28,7 @@ Please refer to http://docs.prediction.io/templates/similarproduct/quickstart/
 $ python data/import_eventserver.py --access_key <your_access_key>
 ```
 
-### query
+### sample query
 
 normal:
 
