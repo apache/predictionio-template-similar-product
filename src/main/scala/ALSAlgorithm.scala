@@ -85,7 +85,7 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
       }.filter { case ((u, i), v) =>
         // keep events with valid user and item index
         (u != -1) && (i != -1)
-      }//.reduceByKey(_ + _) // aggregate all view events of same user-item pair
+      }
       .map { case ((u, i), v) =>
         // MLlibRating requires integer index for user and item
         MLlibRating(u, i, v)
@@ -105,7 +105,6 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
       iterations = ap.numIterations,
       lambda = ap.lambda,
       blocks = -1,
-      //alpha = 1.0,
       seed = seed)
 
     new ALSModel(
