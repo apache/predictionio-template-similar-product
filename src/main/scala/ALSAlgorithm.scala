@@ -45,8 +45,8 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
 
   @transient lazy val logger = Logger[this.type]
 
-  def train(sc: SparkContext, data: PreparedData): ALSModel = {
-    require(!data.viewEvents.take(1).isEmpty,
+  def train(sc:SparkContext ,data: PreparedData): ALSModel = {
+    require(!data.rateEvents.take(1).isEmpty,
       s"viewEvents in PreparedData cannot be empty." +
       " Please check if DataSource generates TrainingData" +
       " and Preprator generates PreparedData correctly.")
@@ -67,7 +67,7 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
       (itemStringIntMap(id), item)
     }.collectAsMap.toMap
 
-    val mllibRatings = data.viewEvents
+    val mllibRatings = data.rateEvents
       .map { r =>
         // Convert user and item String IDs to Int index for MLlib
         val uindex = userStringIntMap.getOrElse(r.user, -1)
@@ -85,7 +85,7 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
       }.filter { case ((u, i), v) =>
         // keep events with valid user and item index
         (u != -1) && (i != -1)
-      }.reduceByKey(_ + _) // aggregate all view events of same user-item pair
+      }//.reduceByKey(_ + _) // aggregate all view events of same user-item pair
       .map { case ((u, i), v) =>
         // MLlibRating requires integer index for user and item
         MLlibRating(u, i, v)
@@ -99,13 +99,13 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
     // seed for MLlib ALS
     val seed = ap.seed.getOrElse(System.nanoTime)
 
-    val m = ALS.trainImplicit(
+    val m = ALS.train(
       ratings = mllibRatings,
       rank = ap.rank,
       iterations = ap.numIterations,
       lambda = ap.lambda,
       blocks = -1,
-      alpha = 1.0,
+      //alpha = 1.0,
       seed = seed)
 
     new ALSModel(
