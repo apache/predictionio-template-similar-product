@@ -47,7 +47,7 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
 
   def train(sc:SparkContext ,data: PreparedData): ALSModel = {
     require(!data.rateEvents.take(1).isEmpty,
-      s"viewEvents in PreparedData cannot be empty." +
+      s"rateEvents in PreparedData cannot be empty." +
       " Please check if DataSource generates TrainingData" +
       " and Preprator generates PreparedData correctly.")
     require(!data.users.take(1).isEmpty,
