@@ -60,18 +60,18 @@ class DataSource(val dsp: DataSourceParams)
       (entityId, item)
     }.cache()
 
-    // get all "user" "view" "item" events
-    val viewEventsRDD: RDD[ViewEvent] = eventsDb.find(
+    // get all "user" "rate" "item" events
+    val rateEventsRDD: RDD[RateEvent] = eventsDb.find(
       appId = dsp.appId,
       entityType = Some("user"),
-      eventNames = Some(List("view")),
+      eventNames = Some(List("rate")),
       // targetEntityType is optional field of an event.
       targetEntityType = Some(Some("item")))(sc)
       // eventsDb.find() returns RDD[Event]
       .map { event =>
-        val viewEvent = try {
+        val rateEvent = try {
           event.event match {
-            case "view" => ViewEvent(
+            case "rate" => RateEvent(
               user = event.entityId,
               item = event.targetEntityId.get,
               t = event.eventTime.getMillis)
@@ -79,18 +79,18 @@ class DataSource(val dsp: DataSourceParams)
           }
         } catch {
           case e: Exception => {
-            logger.error(s"Cannot convert ${event} to ViewEvent." +
+            logger.error(s"Cannot convert ${event} to RateEvent." +
               s" Exception: ${e}.")
             throw e
           }
         }
-        viewEvent
+        rateEvent
       }.cache()
 
     new TrainingData(
       users = usersRDD,
       items = itemsRDD,
-      viewEvents = viewEventsRDD
+      rateEvents = rateEventsRDD
     )
   }
 }
@@ -99,16 +99,16 @@ case class User()
 
 case class Item(categories: Option[List[String]])
 
-case class ViewEvent(user: String, item: String, t: Long)
+case class RateEvent(user: String, item: String, t: Long)
 
 class TrainingData(
   val users: RDD[(String, User)],
   val items: RDD[(String, Item)],
-  val viewEvents: RDD[ViewEvent]
+  val rateEvents: RDD[RateEvent]
 ) extends Serializable {
   override def toString = {
     s"users: [${users.count()} (${users.take(2).toList}...)]" +
     s"items: [${items.count()} (${items.take(2).toList}...)]" +
-    s"viewEvents: [${viewEvents.count()}] (${viewEvents.take(2).toList}...)"
+    s"rateEvents: [${rateEvents.count()}] (${rateEvents.take(2).toList}...)"
   }
 }
