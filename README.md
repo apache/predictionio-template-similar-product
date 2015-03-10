@@ -6,6 +6,10 @@ Please refer to http://docs.prediction.io/templates/similarproduct/quickstart/
 
 ## Versions
 
+### v0.1.3
+
+- cache mllibRatings RDD in algorithm train() because it is used at multiple places (non-empty data check and ALS)
+
 ### v0.1.2
 
 - update for PredictionIO 0.9.0
