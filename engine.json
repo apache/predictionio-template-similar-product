@@ -4,7 +4,7 @@
   "engineFactory": "org.template.similarproduct.SimilarProductEngine",
   "datasource": {
     "params" : {
-      "appId": 9
+      "appName": "INVALID_APP_NAME"
     }
   },
   "algorithms": [
