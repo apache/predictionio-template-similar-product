@@ -6,6 +6,12 @@ Please refer to http://docs.prediction.io/templates/similarproduct/quickstart/
 
 ## Versions
 
+### v0.3.1
+
+- Add CooccurrenceAlgorithm.
+  To use this algorithm, override engine.json by engine-cooccurrence.json,
+  or specify `--variant engine-cooccurrence.json` parameter for both pio train **and** deploy
+
 ### v0.3.0
 
 - update for PredictionIO 0.9.2, including:
