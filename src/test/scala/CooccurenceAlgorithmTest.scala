@@ -5,7 +5,7 @@ import io.prediction.data.storage.BiMap
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 
-class CooccurenceAlgorithmTest
+class CooccurrenceAlgorithmTest
   extends FlatSpec with EngineTestSparkContext with Matchers {
 
   val params = CooccurrenceAlgorithmParams(n = 10)

@@ -29,7 +29,7 @@ object SimilarProductEngine extends IEngineFactory {
       classOf[Preparator],
       Map(
         "als" -> classOf[ALSAlgorithm],
-        "cooccurence" -> classOf[CooccurrenceAlgorithm]),
+        "cooccurrence" -> classOf[CooccurrenceAlgorithm]),
       classOf[Serving])
   }
 }
