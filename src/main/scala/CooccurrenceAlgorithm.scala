@@ -58,8 +58,10 @@ class CooccurrenceAlgorithm(val ap: CooccurrenceAlgorithmParams)
 
     val userItem = events
       // map item from string to integer index
-      .map ( v => (v.user, itemStringIntMap.getOrElse(v.item, 1)) )
-      .filter { case (user, item) => item != -1 }
+      .flatMap {
+        case ViewEvent(user, item, _) if itemStringIntMap.contains(item) => Some(user, itemStringIntMap(item))
+        case _ => None
+      }
       // if user view same item multiple times, only count as once
       .distinct()
       .cache()

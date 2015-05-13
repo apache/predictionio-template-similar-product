@@ -35,7 +35,9 @@ class CooccurrenceAlgorithmTest
     ViewEvent("u5", "i0", 1000040),
     ViewEvent("u5", "i1", 1000040),
     ViewEvent("u6", "i0", 1000040),
-    ViewEvent("u6", "i1", 1000040)
+    ViewEvent("u6", "i1", 1000040),
+    ViewEvent("u7", "i4", 1000050), //Unknown item
+    ViewEvent("u7", "i3", 1000050)
   )
 
   "trainCooccurrence" should "return top 10 correctly" in {
