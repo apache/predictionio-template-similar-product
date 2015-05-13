@@ -6,11 +6,16 @@ Please refer to http://docs.prediction.io/templates/similarproduct/quickstart/
 
 ## Versions
 
+### v0.3.2
+
+- Fix CooccurrenceAlgorithm with unknown item ids
+
 ### v0.3.1
 
 - Add CooccurrenceAlgorithm.
-  To use this algorithm, override engine.json by engine-cooccurrence.json,
-  or specify `--variant engine-cooccurrence.json` parameter for both pio train **and** deploy
+  To use this algorithm, override `engine.json` by `engine-cooccurrence.json`,
+  or specify `--variant engine-cooccurrence.json` parameter for both `$pio train` **and**
+  `$pio deploy`
 
 ### v0.3.0
 
