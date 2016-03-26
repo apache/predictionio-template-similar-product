@@ -7,6 +7,7 @@ case class Query(
   items: List[String],
   num: Int,
   categories: Option[Set[String]],
+  categoryBlackList: Option[Set[String]],
   whiteList: Option[Set[String]],
   blackList: Option[Set[String]]
 ) extends Serializable
