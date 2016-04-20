@@ -158,6 +158,7 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
         i = i,
         items = model.items,
         categories = query.categories,
+        categoryBlackList = query.categoryBlackList,
         queryList = queryList,
         whiteList = whiteList,
         blackList = blackList
@@ -218,6 +219,7 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
     i: Int,
     items: Map[Int, Item],
     categories: Option[Set[String]],
+    categoryBlackList: Option[Set[String]],
     queryList: Set[Int],
     whiteList: Option[Set[Int]],
     blackList: Option[Set[Int]]
@@ -232,6 +234,12 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
         // keep this item if has ovelap categories with the query
         !(itemCat.toSet.intersect(cat).isEmpty)
       }.getOrElse(false) // discard this item if it has no categories
+    }.getOrElse(true) &&
+    categoryBlackList.map { cat =>
+      items(i).categories.map { itemCat =>
+        // discard this item if has ovelap categories with the query
+        (itemCat.toSet.intersect(cat).isEmpty)
+      }.getOrElse(true) // keep this item if it has no categories
     }.getOrElse(true)
   }
 
