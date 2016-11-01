@@ -1,6 +1,6 @@
 package org.template.similarproduct
 
-import io.prediction.data.storage.BiMap
+import org.apache.predictionio.data.storage.BiMap
 
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers

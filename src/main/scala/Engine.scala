@@ -1,12 +1,13 @@
 package org.template.similarproduct
 
-import io.prediction.controller.IEngineFactory
-import io.prediction.controller.Engine
+import org.apache.predictionio.controller.IEngineFactory
+import org.apache.predictionio.controller.Engine
 
 case class Query(
   items: List[String],
   num: Int,
   categories: Option[Set[String]],
+  categoryBlackList: Option[Set[String]],
   whiteList: Option[Set[String]],
   blackList: Option[Set[String]]
 ) extends Serializable
