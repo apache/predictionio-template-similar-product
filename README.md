@@ -6,6 +6,12 @@ Please refer to http://predictionio.incubator.apache.org/templates/similarproduc
 
 ## Versions
 
+### v0.11.0-incubating
+
+- Bump version number to track PredictionIO version
+- Rename Scala package name
+- Update SBT version
+
 ### v0.4.0
 
 Update for Apache PredictionIO 0.10.0-incubating
