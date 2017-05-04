@@ -1,4 +1,4 @@
-package org.template.similarproduct
+package org.example.similarproduct
 
 import org.apache.predictionio.controller.P2LAlgorithm
 import org.apache.predictionio.controller.Params

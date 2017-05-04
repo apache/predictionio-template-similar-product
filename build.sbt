@@ -1,7 +1,5 @@
 name := "template-scala-parallel-similarproduct"
 
-organization := "org.apache.predictionio"
-
 parallelExecution in Test := false
 
 test in assembly := {}
