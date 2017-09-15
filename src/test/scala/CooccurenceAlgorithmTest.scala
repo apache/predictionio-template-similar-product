@@ -109,6 +109,7 @@ class CooccurrenceAlgorithmTest
       items = List("i1"),
       num = 10,
       categories = None,
+      categoryBlackList = None,
       whiteList = None,
       blackList = None
     )
@@ -131,6 +132,7 @@ class CooccurrenceAlgorithmTest
       items = List("i1", "i2"),
       num = 10,
       categories = None,
+      categoryBlackList = None,
       whiteList = None,
       blackList = None
     )
