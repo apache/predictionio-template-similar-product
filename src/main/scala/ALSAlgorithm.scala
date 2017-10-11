@@ -5,7 +5,6 @@ import org.apache.predictionio.controller.Params
 import org.apache.predictionio.data.storage.BiMap
 
 import org.apache.spark.SparkContext
-import org.apache.spark.SparkContext._
 import org.apache.spark.mllib.recommendation.ALS
 import org.apache.spark.mllib.recommendation.{Rating => MLlibRating}
 
@@ -168,13 +167,13 @@ class ALSAlgorithm(val ap: ALSAlgorithmParams)
     val topScores = getTopN(filteredScore, query.num)(ord).toArray
 
     val itemScores = topScores.map { case (i, s) =>
-      new ItemScore(
+      ItemScore(
         item = model.itemIntStringMap(i),
         score = s
       )
     }
 
-    new PredictedResult(itemScores)
+    PredictedResult(itemScores)
   }
 
   private
