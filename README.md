@@ -3,15 +3,20 @@
 ## Documentation
 
 Please refer to
-http://predictionio.incubator.apache.org/templates/similarproduct/quickstart/
+https://predictionio.apache.org/templates/similarproduct/quickstart/
 
 ## Versions
+
+### v0.13.0
+
+Update for Apache PredictionIO 0.13.0
 
 ### v0.12.0-incubating
 
 - Bump version number to track PredictionIO version
 - Sets default build targets according to PredictionIO
 - Fix warnings and use of case class
+- Python3 support in helper scripts
 
 ### v0.11.0-incubating
 
